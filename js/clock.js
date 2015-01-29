@@ -4,23 +4,21 @@ function getTime() {
 	var hours = date.getHours();
 	var minutes = date.getMinutes();
 	var seconds = date.getSeconds();
-	var deciseconds = Math.round(date.getMilliseconds() / 100);
-	if(deciseconds == 10)
-	{
-		deciseconds = 0;
-	}
+
 	var period = "am";
-	
 	if(hours > 12) {
 		hours = hours - 12;
 		period = "pm";
 	}
+	if(hours < 1) {
+		hours = hours + 12;
+	}
 	var clockElement = document.getElementById("clock");
 	
 	clockElement.innerHTML = pad(hours) + ":" + pad(minutes) + 
-		":" + pad(seconds) + "." + deciseconds + "&nbsp" + period;
+		":" + pad(seconds) + "&nbsp" + period;
 		
-	setTimeout(getTime, 1);
+	setTimeout(getTime, 1000);
 }
 
 function pad(n) {
