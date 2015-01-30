@@ -1,5 +1,30 @@
+.cold {
+	background-color: #95A5A6;
+}
+
+.chilly {
+	background-color: #1ABC9C;
+}
+
+.nice {
+	background-color: #2980B9;
+}
+
+.warm {
+	background-color: #E67E22;
+}
+
+.hot {
+	background-color: #E74C3C;
+}
+
 body {
 	background-color: #663399;
+}
+
+#title {
+	text-decoration: underline;
+	font-size: 1.1em;
 }
 
 .outer {
@@ -25,16 +50,6 @@ body {
 	margin-right: auto;
 }
 
-h1 {
-	font-family: "Verdana";
-	font-style: normal;
-	font-size: 100%;
-	font-weight: normal;
-	color: #FFCC00;
-	margin: 0.5em;
-	text-align: center;
-}
-
 .clockText {
 	font-family: "Trebuchet MS";
 	font-style: normal;
@@ -46,7 +61,7 @@ h1 {
 	letter-spacing: -0.025em;
 }
 
-.alarmText {
+.yellowLabel {
 	font-family: "Verdana";
 	font-style: normal;
 	font-size: 100%;
@@ -54,4 +69,18 @@ h1 {
 	color: #FFCC00;
 	margin: 0.5em;
 	text-align: center;
+}
+
+.whiteLabel {
+	font-family: "Verdana";
+	font-style: normal;
+	font-size: 100%;
+	font-weight: normal;
+	color: #FFFFFF;
+	margin: 0.5em;
+	text-align: center;
+}
+
+.margins {
+	margin: 15px;
 }
