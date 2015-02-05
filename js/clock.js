@@ -1,3 +1,45 @@
+var numAlarmInsertions = 0;
+
+function deleteAlarm(time, alarmName, id) {
+	var AlarmObject = Parse.Object.extend("Alarm");
+	var query = new Parse.Query(AlarmObject);
+	query.find({
+		success: function(results) {
+			for(var i = 0; i < results.length; i++) {
+				if(results[i].get("time") == time &&
+					results[i].get("alarmName") == alarmName) {
+						results[i].destroy({
+							success: function(object) {
+								$("#" + id).remove();
+							},
+							error: function(object, error) {
+								alert("Failed to delete alarm!");
+							}
+						});
+					}
+			}
+		},
+		error: function(error) {
+			
+		}
+	});
+}
+
+function getAllAlarms() {
+	Parse.initialize("xTFAyS2AAtW2VDZu6aZwEeOobczcG6XIdWdagatG", "cwXbXkErhZJS9c4ygu10NVnnazwdd6HUxlYa9Bc2");
+
+	var AlarmObject = Parse.Object.extend("Alarm");
+	var query = new Parse.Query(AlarmObject);
+	query.find({
+		success: function(results) {
+			for (var i = 0; i < results.length; i++) {
+				insertAlarm(results[i].get("time"), results[i].get("alarmName"));
+			}
+		}
+	});
+
+}
+
 function showAlarmPopup() {
 	$("#mask").removeClass("hide");
 	$("#popup").removeClass("hide");
@@ -8,11 +50,15 @@ function hideAlarmPopup() {
 	$("#popup").addClass("hide");
 }
 
-function insertAlarm(hours, mins, ampm, alarmName) {
-	var newAlarm = $("<div></div>");
+function insertAlarm(time, alarmName) {
+	numAlarmInsertions++;
+	var newAlarm = $("<div id='" + numAlarmInsertions + "'></div>");
 	newAlarm.addClass("flexable");
 	newAlarm.append("<div class=\'name\'>" + alarmName + "&nbsp</div>");
-	newAlarm.append("<div class=\'time\'>" + hours + ":" + mins + ampm + "</div>")
+	newAlarm.append("<div class=\'time\'>" + time + "</div>")
+	var newDeleteButton = $("<button style='margin-left:10px'>Delete</button>");
+	newDeleteButton.attr("onclick", "deleteAlarm('" + time + "','" + alarmName + "','" + numAlarmInsertions + "')");
+	newAlarm.append(newDeleteButton);
 	$("#alarms").append(newAlarm);
 }
 
@@ -22,8 +68,20 @@ function addAlarm() {
 	var ampm = $("#ampm option:selected").text();
 	var alarmName = $("#alarmName").val();
 	
-	insertAlarm(hours, mins, ampm, alarmName);
-	hideAlarmPopup();
+	var AlarmObject = Parse.Object.extend("Alarm");
+	var alarmObject = new AlarmObject();
+	var time = hours + ":" + mins + ampm;
+	alarmObject.save({
+		"time": time, 
+		"alarmName": alarmName}, {
+		success: function(object) {
+			insertAlarm(time, alarmName);
+			hideAlarmPopup();
+		},
+		error: function(object, error) {
+			alert("Failed to add alarm!");
+		}
+	});
 }
 
 function getTime() {
@@ -78,4 +136,6 @@ $(document).ready(function() {
 					$("#forecastLabel").append("<br>High of " + tempMax + " &degF");
 				}
 			);
+			
+			getAllAlarms();
 });
