@@ -1,3 +1,31 @@
+function showAlarmPopup() {
+	$("#mask").removeClass("hide");
+	$("#popup").removeClass("hide");
+}
+
+function hideAlarmPopup() {
+	$("#mask").addClass("hide");
+	$("#popup").addClass("hide");
+}
+
+function insertAlarm(hours, mins, ampm, alarmName) {
+	var newAlarm = $("<div></div>");
+	newAlarm.addClass("flexable");
+	newAlarm.append("<div class=\'name\'>" + alarmName + "&nbsp</div>");
+	newAlarm.append("<div class=\'time\'>" + hours + ":" + mins + ampm + "</div>")
+	$("#alarms").append(newAlarm);
+}
+
+function addAlarm() {
+	var hours = $("#hours option:selected").text();
+	var mins = $("#mins option:selected").text();
+	var ampm = $("#ampm option:selected").text();
+	var alarmName = $("#alarmName").val();
+	
+	insertAlarm(hours, mins, ampm, alarmName);
+	hideAlarmPopup();
+}
+
 function getTime() {
 	console.log("updating time");
 	var date = new Date();
@@ -23,8 +51,6 @@ function getTime() {
 function pad(n) {
     return (n < 10) ? ("0" + n) : n;
 }
-
-
 
 $(document).ready(function() {
 			$.getJSON (
