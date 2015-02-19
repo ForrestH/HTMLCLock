@@ -7,6 +7,24 @@
 		<link href="css/alarm.css" rel="stylesheet" type="text/css">
 	</head>
 	<body onLoad="getTime()">
+		<script>
+		  window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : 'your-app-id',
+			  xfbml      : true,
+			  version    : 'v2.1'
+			});
+		  };
+
+		  (function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "//connect.facebook.net/en_US/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
+		<div class="fb-like" data-share="true" data-width="450" data-show-faces="true">like</div>
 		<div class="outer">
 		<div class="middle">
 		<div class="inner">
