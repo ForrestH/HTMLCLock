@@ -9,9 +9,8 @@ var userid = "";
     if (response.status === 'connected') {
 	  loggedIn = true;
 	  userid = response.authResponse.userID;
-	  alert("userid=" + userid);
       displayLoginSuccess();
-	  getAllAlarms(response.id);
+	  getAllAlarms();
     } else if (response.status === 'not_authorized') {
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
@@ -62,7 +61,7 @@ function deleteAlarm(time, alarmName, id) {
 	});
 }
 
-function getAllAlarms(userid) {
+function getAllAlarms() {
 	console.log("userid=" + userid);
 	Parse.initialize("xTFAyS2AAtW2VDZu6aZwEeOobczcG6XIdWdagatG", "cwXbXkErhZJS9c4ygu10NVnnazwdd6HUxlYa9Bc2");
 
