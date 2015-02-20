@@ -8,7 +8,7 @@ var userid = "";
 
     if (response.status === 'connected') {
 	  loggedIn = true;
-	  userid = response.id;
+	  userid = response.authResponse.userID;
 	  alert("userid=" + userid);
       displayLoginSuccess();
 	  getAllAlarms(response.id);
