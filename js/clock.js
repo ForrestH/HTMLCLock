@@ -166,7 +166,6 @@ function pad(n) {
 }
 
 function weatherInit() {
-	alert("penis");
 	$.getJSON (
 		"https://api.forecast.io/forecast/6206d2099d97ff183ccbdb62f468520e/35.300399,-120.662362",
 		"callback=?",
