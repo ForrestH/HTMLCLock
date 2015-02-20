@@ -39,6 +39,13 @@ body {
 	vertical-align: middle;
 }
 
+.loginText {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: normal;
+	font-size: 1em;
+	background: none;
+}
+
 .inner {
 	background-color: #3D007A;
 	vertical-align: middle;
