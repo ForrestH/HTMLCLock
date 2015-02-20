@@ -7,6 +7,26 @@
 		<link href="css/alarm.css" rel="stylesheet" type="text/css">
 	</head>
 	<body onLoad="getTime()">
+		<script>
+		  window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : '866885373364441',
+			  xfbml      : true,
+			  version    : 'v2.1'
+			});
+			
+			// put code here to run after facebook sdk loads
+			
+		  };
+
+		  (function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "//connect.facebook.net/en_US/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
 		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 		</fb:login-button>
 		<div class="outer">
