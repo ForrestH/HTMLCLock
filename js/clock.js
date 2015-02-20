@@ -9,6 +9,7 @@ var userid = "";
     if (response.status === 'connected') {
 	  loggedIn = true;
 	  userid = response.id;
+	  alert("userid=" + userid);
       displayLoginSuccess();
 	  getAllAlarms(response.id);
     } else if (response.status === 'not_authorized') {
