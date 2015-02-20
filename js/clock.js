@@ -1,24 +1,5 @@
 var numAlarmInsertions = 0;
 
-  window.fbAsyncInit = function() {
-	FB.init({
-	  appId      : '866885373364441',
-	  xfbml      : true,
-	  version    : 'v2.1'
-	});
-	
-	// put code here to run after facebook sdk loads
-	
-  };
-
-  (function(d, s, id){
-	 var js, fjs = d.getElementsByTagName(s)[0];
-	 if (d.getElementById(id)) {return;}
-	 js = d.createElement(s); js.id = id;
-	 js.src = "//connect.facebook.net/en_US/sdk.js";
-	 fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -191,6 +172,7 @@ function pad(n) {
 }
 
 $(document).ready(function() {
+alert("penis");
 			$.getJSON (
 				"https://api.forecast.io/forecast/6206d2099d97ff183ccbdb62f468520e/35.300399,-120.662362",
 				"callback=?",
