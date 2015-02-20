@@ -70,8 +70,10 @@ function getAllAlarms(userid) {
 	query.equalTo("userid", userid);
 	query.find({
 		success: function(results) {
-			for (var i = 0; i < results.length; i++) {
-				insertAlarm(results[i].get("time"), results[i].get("alarmName"));
+			if(results !== undefined) {
+				for (var i = 0; i < results.length; i++) {
+					insertAlarm(results[i].get("time"), results[i].get("alarmName"));
+				}
 			}
 		}
 	});
