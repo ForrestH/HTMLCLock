@@ -38,6 +38,7 @@ var userid = "";
 function deleteAlarm(time, alarmName, id) {
 	var AlarmObject = Parse.Object.extend("Alarm");
 	var query = new Parse.Query(AlarmObject);
+	query.equalTo("userid", userid);
 	query.find({
 		success: function(results) {
 			for(var i = 0; i < results.length; i++) {
