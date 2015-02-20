@@ -48,8 +48,6 @@ var numAlarmInsertions = 0;
     statusChangeCallback(response);
   });
 
-  };
-
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
