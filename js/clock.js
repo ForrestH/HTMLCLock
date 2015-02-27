@@ -46,6 +46,7 @@ function deleteAlarm(time, alarmName, id) {
 					results[i].get("alarmName") == alarmName) {
 						results[i].destroy({
 							success: function(object) {
+								ga('send', 'event', 'Alarm', 'Delete');
 								$("#" + id).remove();
 							},
 							error: function(object, error) {
@@ -121,6 +122,7 @@ function addAlarm() {
 		"alarmName": alarmName,
 		"userid": userid}, {
 		success: function(object) {
+			ga('send', 'event', 'Alarm', 'Add');
 			insertAlarm(time, alarmName);
 			hideAlarmPopup();
 		},
